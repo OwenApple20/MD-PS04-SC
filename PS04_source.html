@@ -135,7 +135,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified on September 10, 2026 23:20:01 Eastern Daylight Time</p>
+      <p class="date">Last modified on September 11, 2026 11:44:16 Eastern Daylight Time</p>
     </div>
   </div>
   
@@ -288,7 +288,7 @@ Figure&nbsp;1: Percentage of voters supporting Trump versus the percentage of wh
 <div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>The relationship in <a href="#fig-TSG" class="quarto-xref">Figure&nbsp;1</a> appears to be positive. This relationship seems to be reasonably linear.</li>
+<li>The relationship in <a href="#fig-TSG" class="quarto-xref">Figure&nbsp;1</a> between Trump support and percentage of white households in poverty appears to be <strong>positive</strong>. This relationship seems to be <strong>reasonably linear</strong>.</li>
 </ul>
 </div>
 </div>
@@ -552,7 +552,7 @@ Figure&nbsp;2: Trump support and white poverty in the US
 <div id="callout-10" class="callout-10-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>No, this will not cause an increase in Trump support. The main reason for this is that correlation, or association, does not mean causation. Just because two variable are correlated does not mean they cause increases and decreases in each other. On top of this, the correlation coefficient for <code>poverty</code> and <code>trump_support</code> is not a very strong one.</li>
+<li>No, this will not cause an increase in Trump support. The main reason for this is that <strong>correlation, or association, does not mean causation</strong>. Just because two variables are correlated does not mean they cause increases and decreases in each other.</li>
 </ul>
 </div>
 </div>
@@ -662,7 +662,7 @@ Figure&nbsp;2: Trump support and white poverty in the US
 <div id="callout-15" class="callout-15-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>No, it would not be a good idea to use this regression equation to predict Trump support at 85% white poverty. This is because by using the equation we get a percentage over 200%, which doesn’t make any sense.</li>
+<li>No, it would not be a good idea to use this regression equation to predict Trump support at 85% white poverty. This is because by using the equation we get a percentage over 200%, which doesn’t make any sense. This is known as extrapolation and the data doesn’t include a data point with white poverty levels over 20%.</li>
 </ul>
 </div>
 </div>
@@ -832,7 +832,7 @@ Figure&nbsp;2: Trump support and white poverty in the US
 <div id="callout-20" class="callout-20-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>I expect that the correlation coefficient is going to be negative because the slope of the line of best fit is negative.</li>
+<li>I expect that the correlation coefficient is going to be negative because the slope of the linear model is negative.</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type your code and comments inside the code chunk</span></span>
@@ -922,8 +922,8 @@ Figure&nbsp;2: Trump support and white poverty in the US
 </div>
 </div>
 <ul>
-<li><p>The intercept means when the percentage of nonwhite households in the area is zero, you can predict a 53.328% Trump support rate.</p></li>
-<li><p>The slope estimates that the percentage of Trump support in an area drops by a value of 0.269% percent when the percentage of nonwhite households increases by 1%.</p></li>
+<li><p>The intercept means when the percentage of nonwhite households in the area is zero, you can predict a 53.33% Trump support rate.</p></li>
+<li><p>The slope estimates that the percentage of Trump support in an area drops by a value of 0.269 percentage points when the percentage of nonwhite households increases by 1 percentage point.</p></li>
 </ul>
 </div>
 </div>
@@ -968,7 +968,7 @@ Figure&nbsp;2: Trump support and white poverty in the US
 </div>
 </div>
 <ul>
-<li>The mathematical prediction shows that if 70% of an area’s population was nonwhite, the expected Trump support in that region would be around 39.5%.</li>
+<li>The mathematical prediction using the linear model <code>nw_mod</code> shows that if 70% of an area’s population was nonwhite, the expected Trump support in that region would be around 39.5%.</li>
 </ul>
 </div>
 </div>
@@ -1016,7 +1016,7 @@ Figure&nbsp;2: Trump support and white poverty in the US
 </div>
 </div>
 <ul>
-<li>The explanatory variable <code>poverty</code> seems to be a better explanatory variable of Trump support. This is because its correlation coefficient is larger, which generally means it will have smaller residuals.</li>
+<li>The explanatory variable <code>poverty</code> seems to be a better explanatory variable of Trump support. This is because the absolute value of its correlation coefficient is larger.</li>
 </ul>
 </div>
 </div>
@@ -1078,6 +1078,31 @@ Figure&nbsp;2: Trump support and white poverty in the US
 </tbody>
 </table>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_regression_points</span>(nw_mod) <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(non_white <span class="sc">==</span> <span class="dv">61</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">ID</th>
+<th style="text-align: right;">trump_support</th>
+<th style="text-align: right;">non_white</th>
+<th style="text-align: right;">trump_support_hat</th>
+<th style="text-align: right;">residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">41.912</td>
+<td style="text-align: right;">-8.912</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p><strong>B.</strong> This prediction would be an overestimate because of a negative residual value. It is an overestimate of 8.912%.</p>
 <p><strong>C.</strong> In other words the residual for this prediction is -8.912.</p>
@@ -1129,7 +1154,7 @@ Tip
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.6.1 (2026-06-24)
 Platform: x86_64-redhat-linux-gnu
